@@ -5,16 +5,38 @@
             <title>Juego Luces</title>
             <link rel="stylesheet" href="estilos.css">
         </head>
-    <body>
-        <h2>Juego Luces - Abraham Blanco Rodriguez</h2>
+        <body>
+            <h2>Juego Luces - Abraham Blanco Rodriguez</h2>
 
-        <div class="contenedor">
+            <div class="contenedor">
 
-            <div class="info">
-                <p><b>Número de intentos</b><br><span id="intentos">0</span></p>
-                <p><b>Tiempo transcurrido</b><br><span id="tiempo">00:00</span></p>
+                <div class="info">
+                    <p><b>Número de intentos</b><br><span id="intentos">0</span></p>
+                    <p><b>Tiempo transcurrido</b><br><span id="tiempo">00:00</span></p>
+                </div>
+
+                <div id="tablero"></div>
+
+                <div class="panel">
+                    <p><b>Nivel de dificultad</b></p>
+                    <label><input type="radio" name="dif" value="facil"> Fácil</label>
+                    <label><input type="radio" name="dif" value="medio"> Medio</label>
+                    <label><input type="radio" name="dif" value="dificil"> Difícil</label>
+                    <label><input type="radio" name="dif" value="personal"> Personalizado</label>
+
+                    <p><b>Número de luces</b></p>
+                    Filas <input type="number" id="fil" value="5" min="2" max="10">
+                    Columnas <input type="number" id="col" value="5" min="2" max="10">
+                    Luces encendidas <input type="number" id="on" value="10" min="1">
+
+                    <br><br>
+                    <button id="btn">Seleccionar</button>
+                    <div>
+                        <p id="mensaje" style="font-size:20px; font-weight:bold; margin-top:20px;"></p>
+                    </div>
+                </div>
             </div>
 
-    <script src="script.js"></script>
-    </body>
+        <script src="script.js"></script>
+        </body>
     </html>
