@@ -1,9 +1,13 @@
 let timer = null;
 let segundos = 0;
 let intentos = 0;
+let filas = 5;
+let columnas = 6;
+let tablero = [];
 
 const intentosHTML = document.getElementById("intentos");
 const tiempoHTML = document.getElementById("tiempo");
+const mensajeHTML = document.getElementById("mensaje");
 
 function iniciarJuego() {
     clearInterval(timer);
@@ -47,4 +51,18 @@ function iniciarJuego() {
                 break;
         }
     }
+
+    tableroHTML.style.gridTemplateColumns = `repeat(${columnas}, 60px)`;
+
+    tablero = Array.from({ length: filas }, () =>
+        Array(columnas).fill(false)
+    );
+
+    for (let i = 0; i < lucesEncendidas; i++) {
+        let f = Math.floor(Math.random() * filas);
+        let c = Math.floor(Math.random() * columnas);
+        tablero[f][c] = true;
+    }
+
+    renderTablero();
 }
