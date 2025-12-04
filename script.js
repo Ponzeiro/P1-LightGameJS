@@ -5,9 +5,12 @@ let filas = 5;
 let columnas = 6;
 let tablero = [];
 
+const tableroHTML = document.getElementById("tablero");
 const intentosHTML = document.getElementById("intentos");
 const tiempoHTML = document.getElementById("tiempo");
 const mensajeHTML = document.getElementById("mensaje");
+
+document.getElementById("btn").addEventListener("click", iniciarJuego);
 
 function iniciarJuego() {
     clearInterval(timer);
@@ -87,4 +90,38 @@ function renderTablero() {
             tableroHTML.appendChild(div);
         }
     }
+}
+
+function cambiar(f, c) {
+
+    const dirs = [
+        [0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]
+    ];
+
+    for (let [df, dc] of dirs) {
+        let nf = f + df, nc = c + dc;
+        if (nf >= 0 && nf < filas && nc >= 0 && nc < columnas) {
+            tablero[nf][nc] = !tablero[nf][nc];
+        }
+    }
+}
+
+
+function verificarVictoria() {
+    const todasEncendidas = tablero.every(fila =>
+        fila.every(celda => celda === true)
+    );
+
+    if (todasEncendidas) {
+        clearInterval(timer);
+
+        mensajeHTML.textContent = "🎉 ¡ENHORABUENA! Todas las luces están encendidas 🎉";
+        mensajeHTML.style.color = "yellow";
+    }
+}
+
+function actualizarTiempo() {
+    let min = String(Math.floor(segundos / 60)).padStart(2, "0");
+    let sec = String(segundos % 60).padStart(2, "0");
+    tiempoHTML.textContent = `${min}:${sec}`;
 }
