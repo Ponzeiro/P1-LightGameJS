@@ -66,3 +66,25 @@ function iniciarJuego() {
 
     renderTablero();
 }
+
+function renderTablero() {
+    tableroHTML.innerHTML = "";
+
+    for (let f = 0; f < filas; f++) {
+        for (let c = 0; c < columnas; c++) {
+            let div = document.createElement("div");
+            div.classList.add("celda");
+
+            if (tablero[f][c]) div.classList.add("encendida");
+
+            div.onclick = () => {
+                cambiar(f, c);
+                renderTablero();
+                intentosHTML.textContent = ++intentos;
+                verificarVictoria();
+            };
+
+            tableroHTML.appendChild(div);
+        }
+    }
+}
