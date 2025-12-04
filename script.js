@@ -20,4 +20,31 @@ function iniciarJuego() {
 
     mensajeHTML.textContent = "";
 
+    const nivel = document.querySelector("input[name='dif']:checked");
+    let lucesEncendidas;
+
+    if (nivel) {
+        switch (nivel.value) {
+            case "facil":
+                filas = 5;
+                columnas = 6;
+                lucesEncendidas = 10;
+                break;
+            case "medio":
+                filas = 6;
+                columnas = 6;
+                lucesEncendidas = 6;
+                break;
+            case "dificil":
+                filas = 10;
+                columnas = 10;
+                lucesEncendidas = 20;
+                break;
+            case "personal":
+                filas = parseInt(document.getElementById("fil").value);
+                columnas = parseInt(document.getElementById("col").value);
+                lucesEncendidas = parseInt(document.getElementById("on").value);
+                break;
+        }
+    }
 }
